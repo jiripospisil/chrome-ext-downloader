@@ -23,3 +23,7 @@ Grab the ID of the extension from the URL, in this case it's `mihcahmgecmbnbcchb
 ```
 $ ced mihcahmgecmbnbcchbopgniflfhgnkff
 ```
+
+## License
+
+MIT
