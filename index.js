@@ -32,9 +32,11 @@ CrxReader.prototype.getZipContents = function() {
  * @param {Buffer} data
  */
 function checkData(data) {
-  var magicNumber = data.readUInt32LE();
+  var magicNumber = [0x43, 0x72, 0x32, 0x34];
 
-  if(magicNumber != 0x34327243) {
-    throw new Error('Not a CRX format');
+  for (var i = 0; i < 4; i++) {
+    if(data[i] != magicNumber[i]) {
+      throw new Error('Not a CRX format');
+    }
   }
 }
