@@ -23,7 +23,7 @@ if(extensionId.length <= 0) {
 }
 
 // kick off the download
-var URL = 'https://clients2.google.com/service/update2/crx?response=redirect&x=id%3D%s%26uc';
+var URL = 'https://clients2.google.com/service/update2/crx?response=redirect&prodversion=38.0&x=id%3D%s%26installsource%3Dondemand%26uc';
 var finalURL = util.format(URL, extensionId);
 
 request({uri: finalURL, encoding: null}, handleResponse);
