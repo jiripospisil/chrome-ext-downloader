@@ -2,7 +2,7 @@
   "name": "chrome-ext-downloader",
   "version": "1.0.2",
   "description": "Allows you to easily download a Chrome extension's source code.",
-  "repository": "mekishizufu/chrome-ext-downloader",
+  "repository": "jiripospisil/chrome-ext-downloader",
   "main": "index.js",
   "bin": {
     "ced": "bin/ced"
