@@ -8,33 +8,41 @@ var util = require('util');
 var request = require('request');
 var AdmZip = require('adm-zip');
 var CrxReader = require('..');
+var path = require('path');
 
 // arguments
 var args = process.argv.splice(2);
 
-if(args.length != 1) {
+if(args.length < 1) {
   printHelpAndExit();
 }
 
-var extensionId = args.join().trim();
+var extensionId = args[0].trim();
 
 if(extensionId.length <= 0) {
   printHelpAndExit();
 }
 
+var target = path.resolve(process.cwd(), args[1] || extensionId);
+
 // kick off the download
 var URL = 'https://clients2.google.com/service/update2/crx?response=redirect&prodversion=38.0&x=id%3D%s%26installsource%3Dondemand%26uc';
 var finalURL = util.format(URL, extensionId);
 
+console.log('Downloading...');
+console.log(' ext: ' + extensionId);
+console.log(' from: ' + finalURL);
+console.log(' to: ' + target);
+
 request({uri: finalURL, encoding: null}, handleResponse);
 
 function handleResponse(error, response, body) {
-  if (!error && response.statusCode == 200) {
+  if (!error && response.statusCode === 200) {
     var reader = new CrxReader(body)
     var contents = reader.getZipContents();
-
     var zip = new AdmZip(contents);
-    zip.extractAllTo(extensionId);
+    zip.extractAllTo(target);
+    console.log('... Done!');
   } else {
     console.error('Unable to download the CRX file.');
     process.exit(1);
@@ -42,6 +50,6 @@ function handleResponse(error, response, body) {
 }
 
 function printHelpAndExit() {
-  console.log('Usage: ced <extension-id>');
+  console.log('Usage: ced <extension-id> (<target-folder>)');
   process.exit(1);
 }
