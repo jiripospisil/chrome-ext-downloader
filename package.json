@@ -17,6 +17,6 @@
   "license": "MIT",
   "dependencies": {
     "adm-zip": "~0.4.4",
-    "request": "~2.33.0"
+    "request": "^2.87.0"
   }
 }
