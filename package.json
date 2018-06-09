@@ -16,7 +16,7 @@
   "author": "Jiri Pospisil <mekishizufu@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "adm-zip": "~0.4.4",
+    "adm-zip": "^0.4.11",
     "request": "^2.87.0"
   }
 }
