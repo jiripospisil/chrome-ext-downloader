@@ -1,6 +1,6 @@
 {
   "name": "chrome-ext-downloader",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Allows you to easily download a Chrome extension's source code.",
   "repository": "jiripospisil/chrome-ext-downloader",
   "main": "index.js",
